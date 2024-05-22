@@ -5,7 +5,8 @@ const router = Router()
 
 
 router.post('/webhook', (req : Request , res : Response)=> {
-    res.json(req.body)
+    console.log(req.body)
+    res.status(200)
 })
 
 
