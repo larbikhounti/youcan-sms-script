@@ -11,7 +11,6 @@ router.post('/webhook', (req : Request , res : Response)=> {
     } catch (error) {
         console.log(error)
     }
-    sendMessage()
     res.status(200).json("message : ok")
 })
 
