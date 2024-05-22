@@ -12,7 +12,7 @@ client.messages
     body: messagearabic,
     from: '+13203010161',
     // to: '+212642230300'
-    to: info.phone
+    to: info.customer.phone
    })
   .then(message => console.log(message.sid)); 
 }
