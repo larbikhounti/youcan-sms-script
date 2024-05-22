@@ -4,14 +4,16 @@ const router = Router()
 
 
 
-router.post('/webhook', (req : Request , res : Response)=> {
+router.post('/webhook',async (req : Request , res : Response)=> {
    // console.log(req.body)
     try {
-        sendMessage(req.body)
+       await sendMessage(req.body.customer)
+        res.status(200).json("message : ok")
     } catch (error) {
         console.log(error)
+        res.status(500).json(error)
     }
-    res.status(200).json("message : ok")
+   
 })
 
 
