@@ -7,7 +7,7 @@ const router = Router()
 router.post('/webhook',async (req : Request , res : Response)=> {
    // console.log(req.body)
     try {
-       await sendMessage(req.body.customer)
+     //  await sendMessage(req.body.customer)
         res.status(200).json("message : ok")
     } catch (error) {
         console.log(error)
