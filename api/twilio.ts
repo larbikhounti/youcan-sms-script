@@ -1,22 +1,21 @@
-
-
 const Twilio = require("twilio");
+require('dotenv').config();
 
+async function sendMessage(info : any) {
+  const client = new Twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+  const messageArabic = `مرحبا ${info.full_name} طلبك قيد المعالجة`;
 
-async function sendMessage(info) {
-
-   //+12674588206
-const client = new Twilio("AC38e6ba2e6860a993de8b9ac58816cb5c",'12ab2c94ee3c15dd7b08a156779f2ed3')
-const messagearabic = `مرحبا ${info.full_name} طلبك قيد المعالجة`
-
-
-return await client.messages
-  .create({
-    body: messagearabic,
-    from: '+13203010161',
-    // to: '+212642230300'
-    to: info.phone
-   })
-  .then(message =>  message ).catch(err =>  err); 
+  try {
+    const message = await client.messages.create({
+      body: messageArabic,
+      from: process.env.TWILIO_PHONE_NUMBER,
+      to: info.phone
+    });
+    return message;
+  } catch (error) {
+    console.error('Error sending message:', error);
+    throw error;
+  }
 }
-module.exports = sendMessage
+
+module.exports = sendMessage;

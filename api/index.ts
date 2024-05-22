@@ -1,18 +1,21 @@
 import express, { Request, Response } from 'express';
-import bodyParser from 'body-parser';
-import router from "./routes"
+import router from './routes';
+
 const app = express();
-app.use(bodyParser())
-app.use(router)
 
+// Use express.json() to parse JSON bodies
+app.use(express.json());
 
-app.listen(3000, () => {
-    console.log(`Server running at http://localhost:3000`)
-  })
+// Use the imported router for routes
+app.use(router);
 
-app.get("/", (req : Request, res : Response) => {
-    res.send('test')
-})
+// Basic test route
+app.get('/', (req: Request, res: Response) => {
+  res.send('test');
+});
 
-
-
+// Start the server
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
