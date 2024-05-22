@@ -5,7 +5,7 @@ const router = Router()
 
 
 router.post('/webhook', (req : Request , res : Response)=> {
-    console.log(req.body)
+   // console.log(req.body)
     try {
         sendMessage(req.body)
     } catch (error) {
